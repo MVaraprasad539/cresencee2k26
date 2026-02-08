@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CreSencE 2k26</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #d946ef;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        th {
+            background: rgba(15, 23, 43, 0.8);
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(51, 65, 85, 0.5);
+        }
+
+        .loading {
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            color: #94a3b8;
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #475569;
+            background: #1e293b;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #9333ea;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #d946ef;
+        }
+
+        .btn-refresh {
+            margin-bottom: 1rem;
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login-overlay" class="login-overlay">
+        <h2 style="color: #d946ef;">Admin Access</h2>
+        <input type="password" id="admin-pass" placeholder="Enter Password" style="margin-bottom: 1rem;">
+        <button onclick="checkPass()">Login</button>
+        <p id="error-msg" style="color: red; display: none; margin-top: 1rem;">Invalid Password</p>
+    </div>
+
+    <div class="container" style="display: none;" id="dashboard-content">
+        <h1>Admin Dashboard - Registrations</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p>Total Registrations: <span id="total-count">0</span></p>
+            <button class="btn-refresh" onclick="fetchRegistrations()">Refresh Data</button>
+        </div>
+
+        <table id="reg-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Event</th>
+                    <th>College</th>
+                    <th>Fee</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="reg-body">
+                <!-- Data here -->
+            </tbody>
+        </table>
+        <div id="loading" class="loading">Loading data...</div>
+    </div>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('admin-pass').value;
+            // Simple client-side check for demo purposes
+            if (pass === "admin123") {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+                fetchRegistrations();
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function fetchRegistrations() {
+            const tbody = document.getElementById('reg-body');
+            const loading = document.getElementById('loading');
+            const countSpan = document.getElementById('total-count');
+
+            tbody.innerHTML = '';
+            loading.style.display = 'block';
+
+            if (!firebase.apps.length) {
+                alert("Firebase not initialized. Check firebase-config.js via console.");
+                return;
+            }
+
+            const db = firebase.firestore();
+            db.collection("registrations").orderBy("timestamp", "desc").get()
+                .then((querySnapshot) => {
+                    loading.style.display = 'none';
+                    countSpan.innerText = querySnapshot.size;
+
+                    if (querySnapshot.empty) {
+                        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No registrations found</td></tr>';
+                        return;
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const date = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'N/A';
+
+                        const row = `
+                        <tr>
+                            <td>${data.name || data.userName || '-'}</td>
+                            <td>${data.email || data.userEmail || '-'}</td>
+                            <td style="color: #d946ef; font-weight: bold;">${data.event}</td>
+                            <td>${data.college || '-'}</td>
+                            <td>${data.fee || '-'}</td>
+                            <td style="font-size: 0.9rem; color: #94a3b8;">${date}</td>
+                        </tr>
+                    `;
+                        tbody.innerHTML += row;
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                    loading.innerText = "Error loading data. Check console.";
+                });
+        }
+    </script>
+</body>
+
+</html>
