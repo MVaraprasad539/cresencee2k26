@@ -34,7 +34,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
-    background-color: var(--ocean-deep);
+    /* background-color: var(--ocean-deep);  <-- Disabled to show fixed video background */
+    background-color: transparent;
     color: white;
     overflow-x: hidden;
 }
@@ -628,57 +629,74 @@ ul {
     }
 }
 
-/* --- Team Section --- */
+/* --- Team Section (Hexagon Redesign) --- */
 .team-card {
     position: relative;
     padding: 2rem;
-    border-radius: 20px;
+    /* Removed border-radius */
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid rgba(232, 186, 48, 0.1);
-    background: rgba(0, 42, 78, 0.6);
-    /* Slightly lighter glass */
-    backdrop-filter: blur(10px);
+    background: transparent;
+    /* Clean look */
 }
 
 .team-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(51, 255, 255, 0.15);
-    border-color: var(--cyan-glow);
 }
 
 .team-card .member-img {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 180px;
+    /* Hexagon Ratio */
     margin: 0 auto 1.5rem;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--gold);
-    box-shadow: 0 0 15px var(--gold);
+
+    /* HEXAGON SHAPE */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(135deg, #0b1e33, #1a3c5a);
+
     position: relative;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #0b1e33, #1a3c5a);
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* Border simulation using pseudo-element container? 
+       Actually, standard border doesn't work well with clip-path.
+       We'll add a drop-shadow filter to the img container instead.
+    */
+    filter: drop-shadow(0 0 5px var(--gold));
+}
+
+.team-card .member-img::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    /* Inner border width */
+    background: #0b1e33;
+    /* Background for image */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+}
+
+.team-card:hover .member-img {
+    filter: drop-shadow(0 0 15px var(--cyan-glow));
+    transform: scale(1.05);
 }
 
 .team-card .member-img span {
     font-size: 4rem;
-    opacity: 0.5;
+    opacity: 0.8;
+    z-index: 2;
 }
 
-.team-card:hover .member-img {
-    border-color: var(--cyan-glow);
-    box-shadow: 0 0 25px var(--cyan-glow);
-}
 
 .team-card h3 {
     color: var(--gold);
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
     font-family: var(--font-heading);
-    text-shadow: 0 0 10px rgba(232, 186, 48, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .team-card p {
@@ -689,19 +707,24 @@ ul {
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 1.5rem;
+    border-top: 1px solid rgba(232, 186, 48, 0.3);
+    border-bottom: 1px solid rgba(232, 186, 48, 0.3);
+    padding: 0.5rem 0;
+    display: inline-block;
 }
 
 .social-links a {
     color: var(--gold);
-    /* Use variable */
     font-size: 1.5rem;
     transition: all 0.3s ease;
     opacity: 0.8;
+    margin: 0 0.5rem;
 }
 
 .social-links a:hover {
     color: var(--cyan-glow);
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(360deg);
+    /* Spin effect */
     opacity: 1;
     text-shadow: 0 0 10px var(--cyan-glow);
 }
@@ -751,15 +774,136 @@ ul {
     font-weight: 700;
 }
 
+
 .events-grid-display {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 1rem;
-    perspective: 1000px;
-    /* For card reveal effects */
+}
+
+/* --- Zig-Zag Card Design --- */
+.event-zigzag-card {
+    display: flex;
+    flex-direction: row;
+    height: 350px;
+    background: rgba(15, 23, 43, 0.6);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 4px;
+    /* Techy sharp corners */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+/* Alternating Layout */
+.event-zigzag-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.event-zigzag-card:hover {
+    border-color: var(--cyan-glow);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.15);
+    transform: translateY(-5px);
+}
+
+.zigzag-img-wrapper {
+    flex: 1;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    /* Angled cut */
+}
+
+.event-zigzag-card:nth-child(even) .zigzag-img-wrapper {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    /* Angled cut reversed */
+}
+
+.img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(11, 30, 51, 0.2), #0b1e33);
+}
+
+.zigzag-content {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.zigzag-content h3 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+}
+
+.zigzag-content p {
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 90%;
+}
+
+.zigzag-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 0.9rem;
+}
+
+/* Decoration Line */
+.content-decoration {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    width: 50px;
+    height: 3px;
+    background: var(--gold);
+}
+
+.event-zigzag-card:nth-child(even) .content-decoration {
+    left: auto;
+    right: 3rem;
+}
+
+.event-zigzag-card:nth-child(even) .zigzag-content {
+    text-align: right;
+    align-items: flex-end;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .event-zigzag-card {
+        flex-direction: column !important;
+        /* Force column on mobile */
+        height: auto;
+    }
+
+    .zigzag-img-wrapper {
+        height: 200px;
+        clip-path: none !important;
+    }
+
+    .zigzag-content {
+        padding: 2rem;
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .content-decoration {
+        display: none;
+    }
 }
 
 .event-display-card {
@@ -1368,6 +1512,456 @@ ul {
     text-shadow: 0 0 15px var(--gold);
 }
 
+
+
+
 .social-icon-link:hover img {
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+/* --- Cyberpunk Grid Animation --- */
+.cyber-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    bottom: -50%;
+    left: -50%;
+    background-image:
+        linear-gradient(#d946ef 1px, transparent 1px),
+        linear-gradient(90deg, #d946ef 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+    transform: rotateX(60deg);
+    animation: gridFlow 4s linear infinite;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+@keyframes gridFlow {
+    0% {
+        transform: rotateX(60deg) translateY(0);
+    }
+
+    100% {
+        transform: rotateX(60deg) translateY(40px);
+    }
+}
+
+/* --- Custom Cursor --- */
+.custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--cyan-glow);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.custom-cursor-follower {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(51, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+.custom-cursor-follower.active {
+    width: 60px;
+    height: 60px;
+    background: rgba(51, 255, 255, 0.1);
+    border-color: var(--cyan-glow);
+}
+
+/* Drag Sparkle Particle */
+.drag-particle {
+    position: fixed;
+    pointer-events: none;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: fadeDispersion 1s ease-out forwards;
+    z-index: 9997;
+}
+
+@keyframes fadeDispersion {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0) translate(var(--tx), var(--ty));
+        opacity: 0;
+    }
+}
+
+/* Click Burst Particle */
+.click-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: burstFade 0.8s ease-out forwards;
+}
+
+@keyframes burstFade {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+
+}
+
+/* --- Glitch Effect --- */
+.glitch {
+    position: relative;
+    color: white;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            transparent 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            transparent 100%);
+    transform: skewX(-25deg);
+    animation: shine 3s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.5;
+    }
+
+    50% {
+        left: 200%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+/* --- Spotlight Overlay (Premium) --- */
+.events-grid-display {
+    position: relative;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+.events-grid-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(51, 255, 255, 0.08), transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.events-grid-display:hover::before {
+    opacity: 1;
+}
+
+/* --- Cyber Circuit Headers (Premium) --- */
+h2 {
+    position: relative;
+    display: inline-block;
+    padding: 0 1.5rem;
+}
+
+h2::before,
+h2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cyan-glow);
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+h2::before {
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+    transform: translateY(-50%);
+}
+
+h2::after {
+    right: 0;
+    border-left: none;
+    border-top: none;
+    transform: translateY(-50%);
+}
+
+h2:hover::before {
+    transform: translateY(-50%) translateX(-5px);
+    box-shadow: -2px -2px 10px var(--cyan-glow);
+}
+
+h2:hover::after {
+    transform: translateY(-50%) translateX(5px);
+    box-shadow: 2px 2px 10px var(--cyan-glow);
+}
+
+/* --- Glitch Reveal (Entry) --- */
+.reveal-on-scroll {
+    opacity: 0;
+}
+
+.reveal-active {
+    animation: glitchReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes glitchReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        filter: hue-rotate(0deg);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        clip-path: polygon(10% 0, 90% 0, 100% 90%, 0 100%);
+        filter: hue-rotate(90deg);
+    }
+
+    40% {
+        transform: translate(-5px, 0);
+        clip-path: polygon(0 10%, 100% 0, 90% 100%, 0 90%);
+        filter: hue-rotate(-90deg);
+    }
+
+    60% {
+        transform: translate(5px, 0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+        clip-path: none;
+        filter: none;
+    }
+}
+
+/* --- RGB Shift Image Hover --- */
+.zigzag-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.zigzag-img-wrapper:hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    mix-blend-mode: hard-light;
+    animation: rgbShift1 0.3s infinite;
+    display: block;
+}
+
+.zigzag-img-wrapper:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    mix-blend-mode: hard-light;
+    animation: rgbShift2 0.3s infinite;
+    display: block;
+}
+
+@keyframes rgbShift1 {
+
+    0%,
+    100% {
+        transform: translate(2px, 0);
+        filter: hue-rotate(-10deg);
+    }
+
+    50% {
+        transform: translate(-2px, 0);
+        filter: hue-rotate(10deg);
+    }
+}
+
+@keyframes rgbShift2 {
+
+    0%,
+    100% {
+        transform: translate(-2px, 0);
+        filter: hue-rotate(10deg);
+    }
+
+    50% {
+        transform: translate(2px, 0);
+        filter: hue-rotate(-10deg);
+    }
+}
+
+/* --- Neon Pulse --- */
+.register-btn-main {
+    animation: neonPulse 2s infinite;
+}
+
+@keyframes neonPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(34, 211, 238, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.8), 0 0 10px var(--cyan-glow);
+    }
+}
+
+/* --- Cyber Grid Background --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -999;
+    animation: gridPan 100s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes gridPan {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50px, -50px) rotate(1deg);
+    }
+}
+
+/* --- Custom Cursor --- */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--cyan-glow);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+    mix-blend-mode: difference;
+    box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.custom-cursor.click {
+    transform: translate(-50%, -50%) scale(0.5);
+    background: var(--cyan-glow);
+}
+
+/* --- Click Particle --- */
+.click-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10002;
+    animation: particleFade 0.6s ease-out forwards;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* --- 3D Tilt Glitch (Buttons) --- */
+.btn-glitch-tilt {
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.btn-glitch-tilt:hover {
+    transform: scale(1.05) rotateX(10deg);
+    box-shadow: 0 10px 20px rgba(34, 211, 238, 0.4);
+}
+
+.btn-glitch-tilt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn-glitch-tilt:hover::before {
+    left: 100%;
+}
+
+/* --- Magnetic Text --- */
+.magnetic-text {
+    display: inline-block;
+    transition: transform 0.3s ease-out;
 }

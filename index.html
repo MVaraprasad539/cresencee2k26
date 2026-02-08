@@ -18,6 +18,10 @@
 </head>
 
 <body class="loading">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"
+        style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--gold); z-index: 10000; transition: width 0.1s;">
+    </div>
 
     <!-- Preloader -->
     <div id="preloader">
@@ -26,6 +30,15 @@
             <span class="highlight-letter">C</span>re<span class="highlight-letter">S</span>enc<span
                 class="highlight-letter">E</span>
         </div>
+    </div>
+
+    <!-- Global Background Video (About Us -> Reach Us) -->
+    <div class="global-event-bg" style="position: fixed; inset: 0; z-index: -10; overflow: hidden;">
+        <video autoplay loop muted playsinline
+            style="width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.4; image-rendering: high-quality;">
+            <source src="event.mp4" type="video/mp4">
+        </video>
+        <div style="position: absolute; inset: 0; background: rgba(5, 11, 20, 0.7);"></div>
     </div>
 
     <!-- Navigation -->
@@ -108,21 +121,37 @@
     <header class="hero"
         style="position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
         <!-- Background Video/Image -->
-        <div class="hero-bg" style="position: absolute; inset: 0; z-index: -1;">
-            <!-- Using the online video from original site for now, or fallback to ocean image -->
-            <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-                <source src="https://res.cloudinary.com/dosdktyci/video/upload/v1768462056/home-video_vdntoh.mp4"
-                    type="video/mp4">
+        <!-- Cyberpunk/TechFest Background Implementation -->
+        <!-- Background Image (Static) -->
+        <!-- Home Section Background: Video + Cyberpunk Overlays -->
+        <div class="hero-bg" style="position: absolute; inset: 0; z-index: -1; background: black; overflow: hidden;">
+            <!-- 1. Background Video -->
+            <video autoplay loop muted playsinline poster="college.jpeg"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center; image-rendering: high-quality; opacity: 0.6;">
+                <source src="home.mp4" type="video/mp4">
             </video>
-            <div class="overlay" style="position: absolute; inset: 0; background: rgba(0,0,0,0.5);"></div>
+
+            <!-- 2. Overlay Gradient for Depth -->
+            <div
+                style="position: absolute; inset: 0; background: linear-gradient(to top, #000000 0%, transparent 80%);">
+            </div>
+
+
+
+
         </div>
 
+        <!-- Load Particles.js -->
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
         <div class="hero-content text-center" style="text-align: center; z-index: 10;">
-            <h1 class="text-gold animate-fade-in"
+            <h1 class="text-gold animate-fade-in shimmer-text"
                 style="font-size: clamp(3rem, 8vw, 6rem); letter-spacing: 0.1em; text-shadow: 0 0 20px rgba(207,160,74,0.3);">
                 <span class="highlight-letter">C</span>re<span class="highlight-letter">S</span>enc<span
                     class="highlight-letter">E</span>
             </h1>
+
+
         </div>
 
         <!-- Bottom Fade -->
@@ -168,13 +197,14 @@
 
 
     <!-- Events Section (3D Carousel) -->
-    <section id="events"
-        style="position: relative; padding: 6rem 1rem; overflow: hidden; background: linear-gradient(to bottom, transparent, rgba(0, 42, 78, 0.4));">
+    <section id="events" style="position: relative; padding: 6rem 1rem; overflow: hidden; background: transparent;">
+
+        <!-- Event Section Background Animation -->
+
+
         <div class="container text-center">
             <h1 class="text-gold animate-fade-in scroll-animate"
                 style="font-size: clamp(3rem, 6vw, 5rem); text-shadow: 0 0 20px rgba(207,160,74,0.3);">EVENTS</h1>
-            <p class="text-gold animate-fade-in delay-1 scroll-animate"
-                style="font-size: 2rem; font-weight: 600; margin-bottom: 4rem;">Categories</p>
 
             <div class="event-tabs-container">
                 <div class="event-tabs glass">
@@ -192,7 +222,7 @@
     </section>
 
 
-
+    </section>
     <!-- Timeline Section -->
     <section id="timeline" class="container" style="padding: 6rem 1rem; position: relative;">
         <h1 class="text-gold animate-fade-in scroll-animate"
@@ -285,6 +315,167 @@
             </div>
 
         </div>
+
+        <!-- Sub-Core Team (15 Member Slots) -->
+        <h2 class="text-gold animate-fade-in scroll-animate"
+            style="font-size: clamp(2rem, 4vw, 3rem); text-align: center; margin: 4rem 0 3rem;">
+            Core Committee
+        </h2>
+
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+            <!-- Member 1 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 7 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 8 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 9 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 10 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 11 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 12 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 13 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 14 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 15 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+        </div>
     </section>
 
     <!-- Social Media & Location -->
@@ -313,22 +504,31 @@
                             width="60" alt="YouTube">
                         <span style="font-size: 1.1rem; font-weight: bold;">YouTube</span>
                     </a>
-                    <a href="https://jntuhucej.ac.in/" target="_blank" class="social-icon-link"
+                    <a href="https://www.jntuhcej.ac.in/" target="_blank" class="social-icon-link"
                         style="text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; gap: 1rem; transition: transform 0.3s;">
                         <span style="font-size: 3.5rem;">🌐</span>
                         <span style="font-size: 1.1rem; font-weight: bold;">College Web</span>
                     </a>
+                </div>
+
+                <!-- Nearby Attraction -->
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <h4 class="text-gold" style="margin-bottom: 1rem;">Nearby Landmark</h4>
+                    <p style="font-size: 1.1rem; color: #cbd5e1;">
+                        <span style="font-size: 1.5rem; vertical-align: middle;">🛕</span>
+                        <strong>Sri Anjaneya Swamy Temple, Kondagattu</strong>
+                    </p>
+                    <p style="color: var(--cyan-glow); font-size: 0.9rem;">(Famous Pilgrim Centre - Just 2km away)</p>
                 </div>
             </div>
 
             <!-- Map -->
             <div class="glass scroll-animate delay-1"
                 style="padding: 1rem; border-radius: 20px; overflow: hidden; height: 100%; min-height: 400px; border: 1px solid rgba(56, 189, 248, 0.3);">
-                <iframe <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15198.546369165736!2d78.9669539!3d18.730248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcc81650eec3309%3A0x2863a8a37466c755!2sJNTUH%20University%20College%20of%20Engineering%20Jagtial!5e0!3m2!1sen!2sin!4v1707390000000!5m2!1sen!2sin"
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.273676239564!2d78.9195973148967!3d18.65171798733282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcc81650eec3309%3A0x2863a8a37466c755!2sJNTUH%20University%20College%20of%20Engineering%20Jagtial!5e0!3m2!1sen!2sin!4v1644908902521!5m2!1sen!2sin"
                     width="100%" height="100%" style="border:0; min-height: 400px; border-radius: 15px;"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
 

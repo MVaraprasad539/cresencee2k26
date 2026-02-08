@@ -132,6 +132,7 @@
                     <th>Event</th>
                     <th>College</th>
                     <th>Fee</th>
+                    <th>Payment</th> <!-- New Column -->
                     <th>Time</th>
                 </tr>
             </thead>
@@ -175,13 +176,22 @@
                     countSpan.innerText = querySnapshot.size;
 
                     if (querySnapshot.empty) {
-                        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No registrations found</td></tr>';
+                        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No registrations found</td></tr>';
                         return;
                     }
 
                     querySnapshot.forEach((doc) => {
                         const data = doc.data();
                         const date = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : 'N/A';
+
+                        // Payment Image Logic
+                        // Checking common field names
+                        const paymentImgUrl = data.screenshotUrl || data.paymentScreenshot || data.paymentImage || null;
+                        const paymentCell = paymentImgUrl
+                            ? `<a href="${paymentImgUrl}" target="_blank">
+                                <img src="${paymentImgUrl}" alt="Proof" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #d946ef;">
+                               </a>`
+                            : `<span style="color: #64748b; font-size: 0.8rem;">No Image</span>`;
 
                         const row = `
                         <tr>
@@ -190,6 +200,7 @@
                             <td style="color: #d946ef; font-weight: bold;">${data.event}</td>
                             <td>${data.college || '-'}</td>
                             <td>${data.fee || '-'}</td>
+                            <td>${paymentCell}</td>
                             <td style="font-size: 0.9rem; color: #94a3b8;">${date}</td>
                         </tr>
                     `;

@@ -331,6 +331,44 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
     modalBackdrops.forEach(backdrop => backdrop.addEventListener('click', closeModal));
 
+    // 4. Hacker Text Scramble (Nav Links)
+    initHackerText();
+
+    function initHackerText() {
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+";
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            link.dataset.value = link.innerText; // Store original
+
+            link.addEventListener('mouseover', event => {
+                let iteration = 0;
+                let interval = setInterval(() => {
+                    event.target.innerText = event.target.innerText
+                        .split("")
+                        .map((letter, index) => {
+                            if (index < iteration) {
+                                return event.target.dataset.value[index];
+                            }
+                            return letters[Math.floor(Math.random() * 26)];
+                        })
+                        .join("");
+
+                    if (iteration >= event.target.dataset.value.length) {
+                        clearInterval(interval);
+                    }
+
+                    iteration += 1 / 3;
+                }, 30);
+
+                // Safety cleanup
+                link.addEventListener('mouseleave', () => {
+                    clearInterval(interval);
+                    event.target.innerText = event.target.dataset.value;
+                }, { once: true });
+            });
+        });
+    }
 
     // =========================================================================
     // EXACT OPENING ANIMATION (Reconstructed High-Fidelity)
@@ -381,12 +419,25 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1.2,
             ease: "power3.out"
         }, "-=0.8")
-        .to('.hero-content p', {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out"
-        }, "-=1.0")
+        .add(() => {
+            // Typing Effect Trigger
+            const desc = document.querySelector('.hero-content p');
+            if (desc) {
+                const text = desc.innerText;
+                desc.innerText = '';
+                desc.style.opacity = 1; // Make visible
+
+                let i = 0;
+                function typeWriter() {
+                    if (i < text.length) {
+                        desc.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 30); // Typing speed
+                    }
+                }
+                typeWriter();
+            }
+        }, "-=0.5")
         .add(() => {
             document.body.classList.remove('loading');
             document.body.style.overflow = 'auto'; // Unlock scroll
@@ -481,21 +532,33 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add animation delay stagger
             filteredEvents.forEach((ev, index) => {
                 const card = document.createElement('div');
-                card.className = 'event-display-card';
-                card.style.animationDelay = `${index * 0.1}s`; // Stagger effect
+                card.className = 'event-zigzag-card'; // New Zig-Zag Class
 
-                // Image Class handling (assuming bg- classes exist from previous css or usage)
-                // Use explicit image if available, else fallback
+                // Add scroll animation class (handled by GSAP or basic CSS observer if present, 
+                // but let's stick to simple CSS fade-in for now or reuse scroll-animate)
+                // card.classList.add('scroll-animate'); 
+
+                card.style.animationDelay = `${index * 0.15}s`;
+
+                // Image logic
                 const bgStyle = ev.image ? `background-image: url('${ev.image}');` : '';
                 const bgClass = ev.image ? '' : (ev.class || 'bg-gaming');
 
                 card.innerHTML = `
-                    <div class="card-image-top ${bgClass}" style="${bgStyle}">
+                    <div class="zigzag-img-wrapper ${bgClass}" style="${bgStyle}">
+                        <div class="img-overlay"></div>
                         ${ev.isSpotlight ? '<span class="card-category-badge">Spotlight</span>' : ''}
                     </div>
-                    <div class="event-card-content">
+                    <div class="zigzag-content">
+                        <div class="content-decoration"></div>
                         <h3>${ev.title}</h3>
-                        <p>${ev.desc}</p>
+                        <p class="event-desc">${ev.desc}</p>
+                        
+                        <div class="zigzag-meta">
+                            <span class="meta-item">🏆 ${ev.prize || 'Exciting Prizes'}</span>
+                            <span class="meta-item">👥 ${ev.rules || 'Register Now'}</span>
+                        </div>
+
                         <button class="register-btn-main" onclick="handleRegisterClick('${ev.title}')">
                             ${USER_SESSION.isLoggedIn ? 'Register Now' : 'Login to Register'}
                         </button>
@@ -521,4 +584,149 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+});
+
+// --- Particles.js Initialization for Cyberpunk Background ---
+// --- Interactive Animations (Burst & Cursor) ---
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Click Burst Animation ---
+    document.addEventListener('click', (e) => {
+        createBurst(e.clientX, e.clientY);
+    });
+
+    function createBurst(x, y) {
+        const particleCount = 12;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('click-particle');
+            document.body.appendChild(particle);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 100 + 50;
+            const tx = Math.cos(angle) * velocity + 'px';
+            const ty = Math.sin(angle) * velocity + 'px';
+
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.setProperty('--tx', tx);
+            particle.style.setProperty('--ty', ty);
+
+            // Random colors from theme
+            const colors = ['#e8ba30', '#33ffff', '#ffffff', '#d946ef'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+            setTimeout(() => {
+                particle.remove();
+            }, 800);
+        }
+    }
+
+    // --- Custom Cursor Trail Animation ---
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
+
+    const follower = document.createElement('div');
+    follower.classList.add('custom-cursor-follower');
+    document.body.appendChild(follower);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+
+        // Simple lag effect for follower
+        setTimeout(() => {
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        }, 50);
+    });
+
+    // Hover effect for links
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => follower.classList.add('active'));
+        el.addEventListener('mouseleave', () => follower.classList.remove('active'));
+    });
+
+    // --- Premium Animations (Tilt & Magnetic) ---
+    initPremiumAnimations();
+
+    function initPremiumAnimations() {
+        // 1. 3D Holographic Tilt
+        // Only active on devices that support hover (Mouse) to prevent mobile scroll blocking
+        if (window.matchMedia('(hover: hover)').matches) {
+            const tiltCards = document.querySelectorAll('.team-card, .event-card, .glass-panel');
+
+            tiltCards.forEach(card => {
+                card.style.transition = 'transform 0.1s ease-out'; // Smooth movement
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    // Calculate center
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    // Calculate tilt (Max 15 degrees)
+                    const rotateX = ((y - centerY) / centerY) * -10; // Invert Y for natural tilt
+                    const rotateY = ((x - centerX) / centerX) * 10;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.5s ease-out'; // Smooth return
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                });
+            });
+
+            // 2. Magnetic Buttons
+            const magnets = document.querySelectorAll('.btn, .nav-link, .social-icon-link');
+
+            magnets.forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    // Move button slightly towards cursor (Magnetic pull)
+                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translate(0, 0)';
+                });
+            });
+        }
+    }
+
+    // --- Extra Animations (Scroll & Spotlight) ---
+    initExtraAnimations();
+
+    function initExtraAnimations() {
+        // 1. Scroll Progress
+        const progressBar = document.querySelector('.scroll-progress');
+        if (progressBar) {
+            window.addEventListener('scroll', () => {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progress = (scrollTop / scrollHeight) * 100;
+                progressBar.style.width = progress + '%';
+            });
+        }
+
+        // 2. Spotlight Overlay for Events Grid
+        const eventGrids = document.querySelectorAll('.events-grid, .events-grid-display');
+        eventGrids.forEach(grid => {
+            grid.addEventListener('mousemove', (e) => {
+                const rect = grid.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                grid.style.setProperty('--mouse-x', `${x}px`);
+                grid.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    }
 });
