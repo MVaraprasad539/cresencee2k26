@@ -141,8 +141,6 @@
 
         </div>
 
-        <!-- Load Particles.js -->
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
         <div class="hero-content text-center" style="text-align: center; z-index: 10;">
             <h1 class="text-gold animate-fade-in shimmer-text"
@@ -150,8 +148,6 @@
                 <span class="highlight-letter">C</span>re<span class="highlight-letter">S</span>enc<span
                     class="highlight-letter">E</span>
             </h1>
-
-
         </div>
 
         <!-- Bottom Fade -->
@@ -171,29 +167,55 @@
         </h1>
 
         <div class="glass scroll-animate"
-            style="padding: 2rem; border-radius: 20px; max-width: 1000px; margin: 0 auto; text-align: justify; border: 1px solid rgba(77, 184, 255, 0.2); box-shadow: 0 0 30px rgba(0, 140, 200, 0.1);">
-            <h2 class="text-gold" style="text-align: center; margin-bottom: 1.5rem; font-family: var(--font-heading);">
-                JNTUHUCEJ - Department of CSE</h2>
-            <p style="color: #e0e0e0; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                Welcome to <strong>CreSencE 2k26</strong>, the flagship national-level technical symposium hosted by
-                the
-                <strong>Department of Computer Science & Engineering</strong> at <strong>JNTUH University College of
-                    Engineering Jagtial</strong>.
+            style="padding: 3rem 2rem; border-radius: 20px; max-width: 1000px; margin: 0 auto; text-align: justify; border: 1px solid rgba(77, 184, 255, 0.2); box-shadow: 0 0 30px rgba(0, 140, 200, 0.1); position: relative; overflow: hidden;">
+
+            <!-- Decorative Tech Line -->
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);">
+            </div>
+
+            <h2 class="text-gold"
+                style="text-align: center; margin-bottom: 2rem; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 2px;">
+                Department of Computer Science & Engineering<br>
+                <span style="font-size: 1rem; color: var(--cyan-glow); opacity: 0.8;">JNTUH University College of
+                    Engineering Jagtial</span>
+            </h2>
+
+            <p class="tech-reveal-text"
+                style="color: #e0e0e0; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                Established in <strong>2007</strong>, the Department of CSE stands as a beacon of technical excellence
+                within JNTUH UCEJ. Accredited with an <strong>NAAC 'A+' Grade</strong>, we are committed to shaping the
+                digital architects of tomorrow through a rigorous curriculum and cutting-edge research environment.
             </p>
-            <p style="color: #e0e0e0; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                Established with a vision to foster technical excellence and innovation, our college has always been
-                at
-                the forefront
-                of shaping future engineers. CreSencE reflects this spirit, offering a platform where technology
-                meets
-                creativity.
+
+            <p class="tech-reveal-text"
+                style="animation-delay: 0.5s; color: #e0e0e0; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                Equipped with state-of-the-art computing infrastructure and driven by a faculty of distinguished
+                researchers, the department leads innovation in <strong>Machine Learning, Information Security, and Data
+                    Science</strong>. CreSencE 2k26 is the culmination of this technical prowess—a national-level
+                symposium designed to challenge intellect and celebrate innovation.
             </p>
-            <p style="color: #e0e0e0; font-size: 1.1rem; line-height: 1.8;">
-                <strong>"Waves of Atlantis"</strong> invites you to dive deep into an ocean of opportunities.
-                From intense Hackathons and Coding challenges to mesmerizing Cultural nights, we have curated an
-                experience
-                that celebrates the convergence of intellect and art. Join us in this digitally immersive journey!
-            </p>
+
+            <!-- Department Stats Grid -->
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                <div class="dept-stat-card">
+                    <div class="stat-icon">🏛️</div>
+                    <div class="stat-value">2007</div>
+                    <div class="stat-label">Established</div>
+                </div>
+                <div class="dept-stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-value">NAAC A+</div>
+                    <div class="stat-label">Accredited</div>
+                </div>
+                <div class="dept-stat-card">
+                    <div class="stat-icon">💻</div>
+                    <div class="stat-value">High-Tech</div>
+                    <div class="stat-label">Laboratories</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -225,262 +247,258 @@
     </section>
     <!-- Timeline Section -->
     <section id="timeline" class="container" style="padding: 6rem 1rem; position: relative;">
-        <div class="holo-panel">
-            <div class="terminal-header">Temporal_Log</div>
-            <h1 class="text-gold animate-fade-in scroll-animate"
-                style="font-size: clamp(3rem, 6vw, 5rem); text-align: center; margin-bottom: 4rem;">TIMELINE</h1>
+        <h1 class="text-gold animate-fade-in scroll-animate"
+            style="font-size: clamp(3rem, 6vw, 5rem); text-align: center; margin-bottom: 4rem;">TIMELINE</h1>
 
-            <div class="timeline-wrapper">
-                <!-- Central Line -->
-                <div class="timeline-line"></div>
+        <div class="timeline-wrapper">
+            <!-- Central Line -->
+            <div class="timeline-line"></div>
 
-                <!-- Day 1 -->
-                <div class="timeline-item left scroll-animate">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass">
-                        <span class="date">Day 1 - March 12</span>
-                        <h3>The Awakening</h3>
-                        <p>Opening Ceremony, Hackathon Begins, Cultural Night</p>
-                    </div>
-                </div>
-
-                <!-- Day 2 -->
-                <div class="timeline-item right scroll-animate">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass">
-                        <span class="date">Day 2 - March 13</span>
-                        <h3>High Tides</h3>
-                        <p>Technical Workshops, E-Sports Finals, DJ Night</p>
-                    </div>
-                </div>
-
-                <!-- Day 3 -->
-                <div class="timeline-item left scroll-animate">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass">
-                        <span class="date">Day 3 - March 14</span>
-                        <h3>The Abyssal Rave</h3>
-                        <p>Project Exhibition, Prize Distribution, Celebrity Concert</p>
-                    </div>
+            <!-- Day 1 -->
+            <div class="timeline-item left scroll-animate">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass">
+                    <span class="date">Day 1 - March 12</span>
+                    <h3>The Awakening</h3>
+                    <p>Opening Ceremony, Hackathon Begins, Cultural Night</p>
                 </div>
             </div>
+
+            <!-- Day 2 -->
+            <div class="timeline-item right scroll-animate">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass">
+                    <span class="date">Day 2 - March 13</span>
+                    <h3>High Tides</h3>
+                    <p>Technical Workshops, E-Sports Finals, DJ Night</p>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="timeline-item left scroll-animate">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content glass">
+                    <span class="date">Day 3 - March 14</span>
+                    <h3>The Abyssal Rave</h3>
+                    <p>Project Exhibition, Prize Distribution, Celebrity Concert</p>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
 
     <!-- Team Section -->
     <section id="team" class="container" style="padding: 6rem 1rem; position: relative;">
-        <div class="holo-panel">
-            <div class="terminal-header">Crew_Manifest</div>
-            <h1 class="text-gold animate-fade-in scroll-animate"
-                style="font-size: clamp(3rem, 6vw, 5rem); text-align: center; margin-bottom: 4rem;">OUR TEAM</h1>
+        <h1 class="text-gold animate-fade-in scroll-animate"
+            style="font-size: clamp(3rem, 6vw, 5rem); text-align: center; margin-bottom: 4rem;">OUR TEAM</h1>
 
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto;">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto;">
 
-                <!-- Team Member 1 -->
-                <div class="team-card scroll-animate">
-                    <div class="member-img">
-                        <span style="font-size: 4rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3>Alex Driftwood</h3>
-                    <p>Event Coordinator</p>
-                    <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
-                        <a href="#" title="LinkedIn">🔗</a>
-                        <a href="#" title="Email">✉️</a>
-                        <a href="#" title="Instagram">📷</a>
-                    </div>
+            <!-- Team Member 1 -->
+            <div class="team-card scroll-animate">
+                <div class="member-img">
+                    <span style="font-size: 4rem; opacity: 0.5;">👤</span>
                 </div>
-
-                <!-- Team Member 2 -->
-                <div class="team-card scroll-animate delay-1">
-                    <div class="member-img">
-                        <span style="font-size: 4rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3>Sarah Ocean</h3>
-                    <p>Technical Lead</p>
-                    <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
-                        <a href="#" title="LinkedIn">🔗</a>
-                        <a href="#" title="Email">✉️</a>
-                        <a href="#" title="Instagram">📷</a>
-                    </div>
+                <h3>Alex Driftwood</h3>
+                <p>Event Coordinator</p>
+                <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
+                    <a href="#" title="LinkedIn">🔗</a>
+                    <a href="#" title="Email">✉️</a>
+                    <a href="#" title="Instagram">📷</a>
                 </div>
-
-                <!-- Team Member 3 -->
-                <div class="team-card scroll-animate delay-2">
-                    <div class="member-img">
-                        <span style="font-size: 4rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3>Marcus Tide</h3>
-                    <p>Creative Director</p>
-                    <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
-                        <a href="#" title="LinkedIn">🔗</a>
-                        <a href="#" title="Email">✉️</a>
-                        <a href="#" title="Instagram">📷</a>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Sub-Core Team (15 Member Slots) -->
-            <h2 class="text-gold animate-fade-in scroll-animate"
-                style="font-size: clamp(2rem, 4vw, 3rem); text-align: center; margin: 4rem 0 3rem;">
-                Core Committee
-            </h2>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-
-                <!-- Member 1 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            <!-- Team Member 2 -->
+            <div class="team-card scroll-animate delay-1">
+                <div class="member-img">
+                    <span style="font-size: 4rem; opacity: 0.5;">👤</span>
                 </div>
-
-                <!-- Member 2 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+                <h3>Sarah Ocean</h3>
+                <p>Technical Lead</p>
+                <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
+                    <a href="#" title="LinkedIn">🔗</a>
+                    <a href="#" title="Email">✉️</a>
+                    <a href="#" title="Instagram">📷</a>
                 </div>
-
-                <!-- Member 3 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 4 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 5 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 6 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 7 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 8 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 9 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 10 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 11 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 12 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 13 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 14 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
-                <!-- Member 15 -->
-                <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
-                    <div class="member-img"
-                        style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
-                        <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
-                    </div>
-                    <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
-                </div>
-
             </div>
+
+            <!-- Team Member 3 -->
+            <div class="team-card scroll-animate delay-2">
+                <div class="member-img">
+                    <span style="font-size: 4rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3>Marcus Tide</h3>
+                <p>Creative Director</p>
+                <div class="social-links" style="display: flex; justify-content: center; gap: 1.5rem;">
+                    <a href="#" title="LinkedIn">🔗</a>
+                    <a href="#" title="Email">✉️</a>
+                    <a href="#" title="Instagram">📷</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sub-Core Team (15 Member Slots) -->
+        <h2 class="text-gold animate-fade-in scroll-animate"
+            style="font-size: clamp(2rem, 4vw, 3rem); text-align: center; margin: 4rem 0 3rem;">
+            Core Committee
+        </h2>
+
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+
+            <!-- Member 1 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 5 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 6 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 7 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 8 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 9 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 10 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 11 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 12 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 13 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 14 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+            <!-- Member 15 -->
+            <div class="team-card scroll-animate glass" style="padding: 1.5rem; text-align: center;">
+                <div class="member-img"
+                    style="width: 100px; height: 100px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold);">
+                    <span style="font-size: 2.5rem; opacity: 0.5;">👤</span>
+                </div>
+                <h3 style="font-size: 1.2rem; color: var(--cyan-glow); margin-bottom: 0.5rem;">Member Name</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1;">Designation</p>
+            </div>
+
+        </div>
     </section>
 
     <!-- Social Media & Location -->

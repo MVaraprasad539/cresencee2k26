@@ -1,41 +1,35 @@
-// --- Event Data Configuration (Replicates Alegria Structure) ---
 const EVENTS_DATA = {
     'technical': {
-        title: 'Technical Events',
+        title: 'Technical Events (Entry: ₹50)',
         events: [
-            { title: 'AI Nexus', desc: 'Discover the future of Intelligence.', prize: '₹15,000', rules: 'Individual', class: 'bg-tech', image: 'assets/tech_bg.png' },
-            { title: 'CyberGuard CTF', desc: 'Capture the Flag security challenge.', prize: '₹10,000', rules: 'Team of 2', class: 'bg-tech', image: 'assets/ctf.png' },
-            { title: 'Robo Wars', desc: 'Ultimate bot battles in the arena.', prize: '₹12,000', rules: 'Weight Limit', class: 'bg-tech', image: 'assets/robowar.png' }
+            { title: 'AI Nexus', desc: 'Discover the future of Intelligence. Winners get Certificates.', prize: 'Certificate', rules: 'Individual', class: 'bg-tech', image: 'assets/tech_bg.png' },
+            { title: 'CyberGuard CTF', desc: 'Capture the Flag security challenge. Winners get Certificates.', prize: 'Certificate', rules: 'Individual', class: 'bg-tech', image: 'assets/ctf.png' },
+            { title: 'Code Sprint', desc: 'Ultimate coding battle. Winners get Certificates.', prize: 'Certificate', rules: 'Individual', class: 'bg-tech', image: 'assets/tech_bg.png' }
         ]
     },
     'non-technical': {
         title: 'Non-Technical Events',
         events: [
-            { title: 'BGMI Tournament', desc: 'Battlegrounds Mobile India.', prize: '₹15,000', rules: 'Squads', class: 'bg-gaming', image: 'assets/bgmi.png' },
-            { title: 'Free Fire Clash', desc: 'Survival battle royale.', prize: '₹10,000', rules: 'Solo/Squad', class: 'bg-gaming', image: 'assets/freefire.png' },
-            { title: 'ShutterUp Photography', desc: 'Capture the moment.', prize: '₹5,000', rules: 'DSLR/Mobile', class: 'bg-art', image: 'assets/photography.png' },
-            { title: 'CineMatrix Videography', desc: 'Short film making contest.', prize: '₹8,000', rules: '3-5 mins', class: 'bg-video', image: 'assets/videography.png' },
-            { title: 'Mehndi Art', desc: 'Traditional henna design.', prize: '₹3,000', rules: '1 hour', class: 'bg-art', image: 'assets/mehndi.png' }
+            { title: 'BGMI Tournament', desc: 'Solo: Entry ₹40. Prizes: 1st ₹80, 2nd ₹60. Duo: Entry ₹80. Prizes: 1st ₹160, 2nd ₹120. Squad: Entry ₹150. Prizes: 1st ₹300, 2nd ₹200. Open to Boys & Girls. Winners & Runners get Certificates.', prize: 'Pool ₹600+', rules: 'Open to All', class: 'bg-gaming', image: 'assets/bgmi.png' },
+            { title: 'Free Fire Clash', desc: 'Solo: Entry ₹40. Prizes: 1st ₹80, 2nd ₹60. Duo: Entry ₹80. Prizes: 1st ₹160, 2nd ₹120. Squad: Entry ₹150. Prizes: 1st ₹300, 2nd ₹200. Open to Boys & Girls. Winners & Runners get Certificates.', prize: 'Pool ₹600+', rules: 'Open to All', class: 'bg-gaming', image: 'assets/freefire.png' },
+            { title: 'ShutterUp (Photo)', desc: 'Entry: ₹20. Prizes: 1st ₹80, 2nd ₹60, 3rd ₹40. Winners & Runners get Certificates.', prize: '₹180 Pool', rules: 'Individual', class: 'bg-art', image: 'assets/photography.png' },
+            { title: 'CineMatrix (Video)', desc: 'Entry: ₹20. Prizes: 1st ₹80, 2nd ₹60, 3rd ₹40. Winners & Runners get Certificates.', prize: '₹180 Pool', rules: 'Individual', class: 'bg-video', image: 'assets/videography.png' },
+            { title: 'Mehindi Art', desc: 'Entry: ₹50. Prizes: 1st ₹120, 2nd ₹80, 3rd ₹60. Winners & Runners get Certificates.', prize: '₹260 Pool', rules: 'Team of 2', class: 'bg-art', image: 'assets/mehndi.png' }
         ]
     },
     'spotlight': {
         title: 'Spotlight Events',
         events: [
-            { title: 'Flashmob', desc: 'Synchronized dance spectacle.', prize: 'N/A', rules: 'Open to all', class: 'bg-spotlight', image: 'assets/flashmob.png', isSpotlight: true },
-            { title: 'Cultural Night', desc: 'A night of tradition and dance.', prize: 'N/A', rules: 'Entry Pass', class: 'bg-spotlight', image: 'assets/cultural.png', isSpotlight: true }
-        ]
-    },
-    'performing-arts': {
-        title: 'Performing Arts',
-        events: [
-            { title: 'Solo Dance', desc: 'Show your moves.', prize: '₹5,000', rules: '3 mins max', class: 'bg-art', image: 'assets/cultural.png' }
+            { title: 'Flashmob', desc: 'Synchronized dance spectacle.', prize: 'N/A', rules: 'Showcase', class: 'bg-spotlight', image: 'assets/flashmob.png', isSpotlight: true },
+            { title: 'Cultural Night', desc: 'A night of tradition and dance.', prize: 'N/A', rules: 'Showcase', class: 'bg-spotlight', image: 'assets/cultural.png', isSpotlight: true },
+            { title: 'Solo Dance', desc: 'Special Dance Performances.', prize: 'N/A', rules: 'Showcase', class: 'bg-spotlight', image: 'assets/cultural.png', isSpotlight: true }
         ]
     },
     'workshops': {
-        title: 'Workshops',
+        title: 'Workshops (Entry: ₹150)',
         events: [
-            { title: 'Generative AI Workshop', desc: 'Master the future of AI. Build LLM apps.', prize: 'Certification', rules: 'Laptop req.', class: 'bg-tech', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000' },
-            { title: 'Cyber Security Workshop', desc: 'Ethical Hacking & Network Defense.', prize: 'Certification', rules: 'Laptop req.', class: 'bg-tech', image: 'https://images.unsplash.com/photo-1563206767-5b1d972b9fb1?auto=format&fit=crop&q=80&w=1000' }
+            { title: 'Generative AI Workshop', desc: 'Master the future of AI. Build LLM apps.', prize: 'Certificate', rules: 'Laptop req.', class: 'bg-tech', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000' },
+            { title: 'Cyber Security Workshop', desc: 'Ethical Hacking & Network Defense.', prize: 'Certificate', rules: 'Laptop req.', class: 'bg-tech', image: 'https://images.unsplash.com/photo-1563206767-5b1d972b9fb1?auto=format&fit=crop&q=80&w=1000' }
         ]
     }
 };
@@ -505,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let type = 'non-technical';
             if (key === 'technical') type = 'technical';
             if (key === 'workshops') type = 'workshop';
+            if (key === 'spotlight') type = 'spotlight';
 
             category.events.forEach(ev => {
                 // Determine Spotlight Status (Custom logic based on popular events)
