@@ -257,18 +257,107 @@ ul {
     }
 }
 
-/* Navigation */
+/* --- Navigation (Floating Cyber-Pill) --- */
 .navbar {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(11, 30, 51, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 0.8rem 2rem;
+    z-index: 1000;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
-    background: rgba(5, 11, 20, 0.95);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    padding: 0.5rem 0;
+    background: rgba(11, 30, 51, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    top: 10px;
+    padding: 0.5rem 2rem;
 }
 
-/* Event Button - Force Clickability */
+/* --- Holo-Panel (Quantum HUD) --- */
+.holo-panel {
+    background: rgba(5, 12, 24, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Sci-Fi Cut Corners */
+    clip-path: polygon(20px 0, 100% 0,
+            100% calc(100% - 20px), calc(100% - 20px) 100%,
+            0 100%, 0 20px);
+    border: none;
+    padding: 5rem 2rem;
+    margin: 6rem auto;
+    max-width: 1300px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.holo-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(135deg, transparent 50%, rgba(34, 211, 238, 0.05) 100%);
+}
+
+.holo-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* Tech Corner Accents */
+    background:
+        linear-gradient(to right, var(--cyan-glow) 2px, transparent 2px) 0 0 / 20px 20px no-repeat,
+        linear-gradient(to bottom, var(--cyan-glow) 2px, transparent 2px) 0 0 / 20px 20px no-repeat,
+        linear-gradient(to left, var(--cyan-glow) 2px, transparent 2px) 100% 100% / 20px 20px no-repeat,
+        linear-gradient(to top, var(--cyan-glow) 2px, transparent 2px) 100% 100% / 20px 20px no-repeat;
+    opacity: 0.8;
+}
+
+/* Terminal Header */
+.terminal-header {
+    font-family: 'Courier New', monospace;
+    color: var(--cyan-glow);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    text-shadow: 0 0 5px var(--cyan-glow);
+    text-transform: uppercase;
+}
+
+.terminal-header::before {
+    content: '> SYSTEM_MODULE: ';
+}
+
+.terminal-header::after {
+    content: '_';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Force Container Reset for Panels */
+.holo-panel .container {
+    width: 100%;
+    padding: 0;
+}
+
 .event-btn {
     margin-top: auto;
     background: transparent;
